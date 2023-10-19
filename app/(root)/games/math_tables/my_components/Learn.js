@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {BsArrowRight} from 'react-icons/bs';
 import {BsArrowLeft} from 'react-icons/bs';
 import { useEffect } from 'react';
+import { Howl } from 'howler';
 const Learn = (props) => {
     const [tableNum, setTableNum] = useState(2);
     const [aRa, setArA] = useState(2);
@@ -15,6 +16,7 @@ const Learn = (props) => {
     const [time, updateTime] = useState(10);
     const [score, updateScore] = useState(0);
     const [timeStored, storeTime] = useState(10);
+    const [isMusicPlay, stopMusic] = useState(true);
     const [wrong, setWrong] = useState(5);
     const [right, setRight] = useState(5);
     const tableQuestion = ()=>{
@@ -22,6 +24,11 @@ const Learn = (props) => {
         writeQuestion(`${tableNum} x ${multiplyBy}`);
         setAnswer(tableNum*multiplyBy);
         setWrong(5);
+        const sound = new Howl({
+          src:['/attention.wav']
+        });
+        sound.play();
+        sound.on('end',()=>{sound.stop();})
     }
     useEffect(()=>{
         let opts=[];
@@ -41,6 +48,7 @@ const Learn = (props) => {
               document.querySelector('#my-time-graph').style.width=`${time*(parseInt(100/timeStored))}%`;
             }else if(time==0){
               overGame(true);
+              stopGame(true);
             }
           }, 1000);
           return ()=>clearInterval(timer);
@@ -65,7 +73,19 @@ const Learn = (props) => {
         }
     }
     const generateNum = (max, min) => Math.floor(Math.random()*(max-min)+min);
+    useEffect(()=>{
+
+      const sound = new Howl({
+        src:['/music.mp3'],
+        loop:true,
+      })
+      sound.play();
+      sound.on('end',()=>{
   
+          sound.play();
+      });
+      return ()=>{sound.stop();}
+    },[])
   return (
     <>
       {myScreen==='learn'?(

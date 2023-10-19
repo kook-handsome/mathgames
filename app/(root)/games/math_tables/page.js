@@ -6,6 +6,7 @@ import Learn from './my_components/Learn';
 import Play from './my_components/Play';
 const Page = () => {
   const [screen, setScreen] = useState('menu');
+  
   return (
     <>
       {screen==='menu' ? (

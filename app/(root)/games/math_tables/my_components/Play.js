@@ -5,6 +5,7 @@ import {FiSettings} from 'react-icons/fi';
 import {BsMenuButtonWide} from 'react-icons/bs';
 import {BsArrowRight} from 'react-icons/bs';
 import {PiPlayPauseBold} from 'react-icons/pi';
+import {Howl} from 'howler';
 import {PiPauseCircle} from 'react-icons/pi';
 import {BsArrowLeft} from 'react-icons/bs';
 import {SlReload} from 'react-icons/sl';
@@ -27,6 +28,7 @@ const Play = (props) => {
 
   const [time, updateTime] = useState(10);
   const [timeStored, storeTime] = useState(10);
+  const [isMusicPlay, stopMusic] = useState(true);
   const launchGame=()=>{
     setMyScreen('play-start');
     giveCrossEquation();
@@ -51,6 +53,11 @@ const Play = (props) => {
     writeQuestion(`${first} x ${second}`);
     setAnswer(first*second);
     writeInput('');
+    const sound = new Howl({
+      src:['/attention.wav']
+    });
+    sound.play();
+    sound.on('end',()=>{sound.stop();})
   }
   useEffect(()=>{
     if(parseInt(input)===answer){
@@ -59,6 +66,20 @@ const Play = (props) => {
       updateTime(timeStored);
     }
   },[input]);
+
+  useEffect(()=>{
+
+    const sound = new Howl({
+      src:['/music.mp3'],
+      loop:true,
+    })
+    sound.play();
+    sound.on('end',()=>{
+
+        sound.play();
+    });
+    return ()=>{sound.stop();}
+  },[])
   useEffect(()=>{
     if(!isGameStop){
       let timer;
@@ -68,6 +89,7 @@ const Play = (props) => {
           document.querySelector('#my-time-graph').style.width=`${time*(parseInt(100/timeStored))}%`;
         }else if(time==0){
           overGame(true);
+          stopGame(true);
         }
       }, 1000);
       return ()=>clearInterval(timer);
