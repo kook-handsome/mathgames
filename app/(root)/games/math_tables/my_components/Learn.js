@@ -1,8 +1,8 @@
+"use client";
 import React, { useState } from 'react'
 import {BsArrowRight} from 'react-icons/bs';
 import {BsArrowLeft} from 'react-icons/bs';
 import { useEffect } from 'react';
-import { Howl } from 'howler';
 const Learn = (props) => {
     const [tableNum, setTableNum] = useState(2);
     const [aRa, setArA] = useState(2);
@@ -73,19 +73,6 @@ const Learn = (props) => {
         }
     }
     const generateNum = (max, min) => Math.floor(Math.random()*(max-min)+min);
-    useEffect(()=>{
-
-      const sound = new Howl({
-        src:['/music.mp3'],
-        loop:true,
-      })
-      sound.play();
-      sound.on('end',()=>{
-  
-          sound.play();
-      });
-      return ()=>{sound.stop();}
-    },[])
   return (
     <>
       {myScreen==='learn'?(
