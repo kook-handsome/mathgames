@@ -28,7 +28,6 @@ const Play = (props) => {
 
   const [time, updateTime] = useState(10);
   const [timeStored, storeTime] = useState(10);
-  const [isMusicPlay, stopMusic] = useState(true);
   const launchGame=()=>{
     setMyScreen('play-start');
     giveCrossEquation();
@@ -67,19 +66,7 @@ const Play = (props) => {
     }
   },[input]);
 
-  useEffect(()=>{
 
-    const sound = new Howl({
-      src:['/music.mp3'],
-      loop:true,
-    })
-    sound.play();
-    sound.on('end',()=>{
-
-        sound.play();
-    });
-    return ()=>{sound.stop();}
-  },[])
   useEffect(()=>{
     if(!isGameStop){
       let timer;

@@ -66,7 +66,7 @@ const Learn = (props) => {
                   updateScore(score+1);
                   tableQuestion();
                   updateTime(timeStored);
-              }, 1000);
+              }, 100);
             }else{
               setWrong(selectedAnswer);
             }
@@ -76,7 +76,7 @@ const Learn = (props) => {
   return (
     <>
       {myScreen==='learn'?(
-        <section className='w-full h-[100vh] grid justify-center items-center'>
+        <section className='w-full grid justify-center items-center'>
           <div className='p-5 grid gap-5'>
             <div className='grid gap-2'>
               <label htmlFor="">Number</label>

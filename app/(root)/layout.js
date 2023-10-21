@@ -1,41 +1,41 @@
 "use client"
 import React from 'react'
-import {AiOutlinePlayCircle, AiOutlinePauseCircle} from 'react-icons/ai';
-import {HiOutlineBellAlert} from 'react-icons/ai';
-import {TbAlertHexagonOff} from 'react-icons/tb';
+import {BiMoon, BiAlarm, BiAbacus, BiAlbum} from 'react-icons/bi';
 import {howl} from 'howler';
 import { useState, useEffect } from 'react';
 import { BiPauseCircle, BiPlayCircle } from 'react-icons/bi';
+const themes=[
+  {themeName:"light",themeIcon:<BiMoon size={30} className='text-secondary'/>},
+  {themeName:"night",themeIcon:<BiAlarm size={30} className='text-secondary'/>},
+  {themeName:"dark",themeIcon:<BiAbacus size={30} className='text-secondary'/>},
+  {themeName:"forest",themeIcon:<BiMoon size={30} className='text-secondary'/>},
+  {themeName:"valentine",themeIcon:<BiMoon size={30} className='text-secondary'/>}
+]
 const Layout = ({children}) => {
-  const [isMusicPlay, stopMusic] = useState(true);
-  useEffect(()=>{
-    if(isMusicPlay){
-      const sound = new Howl({
-        src:['/music.mp3'],
-        loop:true,
-      })
-      sound.play();
-      sound.on('end',()=>{
-
-          sound.play();
-      });
-      return ()=>{sound.stop();}
-    }
-  },[isMusicPlay]);
+  const [theme, setTheme] = useState("light");
   return (
-    <>
+    <div data-theme={theme}>
       <header>
-        <nav className="w-full flex items-end">
+        <nav className="w-full flex items-end justify-end">
           <ul className='flex items-end gap-x-5 px-5 py-3'>
-            <li onClick={()=>{stopMusic(!isMusicPlay);}}>{isMusicPlay?<BiPauseCircle className='text-secondary' size={30}/>:<BiPlayCircle className='text-secondary' size={30}/>}</li>
-            <li className='text-primary-content border-neutral-focus shadow-2xl'>light</li>
+          <li className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn m-1">Click</label>
+            <ul tabIndex={0} className="dropdown-content z-[1] p-2 shadow-2xl bg-base-100 rounded-box w-52">
+              {themes.map((element)=>(
+                <li className='flex items-center gap-x-4 text-secondary font-bold' onClick={()=>{setTheme(element.themeName)}}>
+                    {element.themeIcon}
+                    <span>{element.themeName}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
           </ul>
         </nav>
       </header>
       <main>
           {children}
       </main>
-    </>
+    </div>
   )
 }
 

@@ -12,8 +12,8 @@ const Keyboard = ({updateInput}) => {
         <span onClick={()=>{updateInput(7)}} className='h-full rounded-md flex items-center justify-center font-bold bg-primary text-center cursor-pointer'>7</span>
         <span onClick={()=>{updateInput(8)}} className='h-full rounded-md flex items-center justify-center font-bold bg-primary text-center cursor-pointer'>8</span>
         <span onClick={()=>{updateInput(9)}} className='h-full rounded-md flex items-center justify-center font-bold bg-primary text-center cursor-pointer'>9</span>
-        <span onClick={()=>{updateInput('x')}} className='bg-primary h-full cursor-pointer col-span-2 text-center rounded-md flex items-center justify-center font-bold'>x</span>
-        <span onClick={()=>{updateInput(0)}} className='h-full rounded-md flex items-center justify-center font-bold bg-primary text-center cursor-pointer'>0</span>
+        <span onClick={()=>{updateInput(0)}} className='bg-primary h-full cursor-pointer col-span-2 text-center rounded-md flex items-center justify-center font-bold'>0</span>
+        <span onClick={()=>{updateInput('x')}} className='h-full rounded-md flex items-center justify-center font-bold bg-primary text-center cursor-pointer'>x</span>
     </div>
   )
 }

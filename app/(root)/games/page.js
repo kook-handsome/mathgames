@@ -2,7 +2,7 @@ import React from 'react'
 import AppCard from './my_components/AppCard';
 const Page = () => {
   return (
-    <section className=''>
+    <section className='min-h-screen'>
         <div>
             <div className=''>
                 <h1 className='mt-32 text-center font-bold text-primary'>Games | Developed by LoveCode's Developer</h1>
