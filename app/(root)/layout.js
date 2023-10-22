@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 import {BiMoon, BiAlarm, BiAbacus, BiAlbum} from 'react-icons/bi';
-import {howl} from 'howler';
 import { useState, useEffect } from 'react';
 import { BiPauseCircle, BiPlayCircle } from 'react-icons/bi';
 const themes=[
@@ -13,16 +12,17 @@ const themes=[
 ]
 const Layout = ({children}) => {
   const [theme, setTheme] = useState("light");
+
   return (
     <div data-theme={theme}>
       <header>
         <nav className="w-full flex items-end justify-end">
           <ul className='flex items-end gap-x-5 px-5 py-3'>
           <li className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn m-1">Click</label>
-            <ul tabIndex={0} className="dropdown-content z-[1] p-2 shadow-2xl bg-base-100 rounded-box w-52">
+            <label tabIndex={0} className="btn m-1">Themes</label>
+            <ul tabIndex={0} className="dropdown-content z-[1] p-5 grid gap-2 shadow-2xl bg-base-100 rounded-box w-52">
               {themes.map((element)=>(
-                <li className='flex items-center gap-x-4 text-secondary font-bold' onClick={()=>{setTheme(element.themeName)}}>
+                <li className='flex items-center gap-x-4 text-secondary font-bold active:bg-neutral-focus p-3 rounded-md' onClick={()=>{setTheme(element.themeName)}}>
                     {element.themeIcon}
                     <span>{element.themeName}</span>
                 </li>
@@ -39,4 +39,4 @@ const Layout = ({children}) => {
   )
 }
 
-export default Layout
+export default Layout;
