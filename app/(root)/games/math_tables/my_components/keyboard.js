@@ -2,7 +2,7 @@ import React from 'react'
 
 const Keyboard = ({updateInput}) => {
   return (
-    <div className='grid grid-cols-3 w-full p-5 h-full gap-2'>
+    <div className='grid grid-cols-3 w-full p-1 h-full gap-2'>
         <span onClick={()=>{updateInput(1)}} className='h-full rounded-md flex items-center justify-center font-bold bg-primary text-center cursor-pointer'>1</span>
         <span onClick={()=>{updateInput(2)}} className='h-full rounded-md flex items-center justify-center font-bold bg-primary text-center cursor-pointer'>2</span>
         <span onClick={()=>{updateInput(3)}} className='h-full rounded-md flex items-center justify-center font-bold bg-primary text-center cursor-pointer'>3</span>

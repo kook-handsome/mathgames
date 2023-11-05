@@ -129,7 +129,7 @@ const Play = (props) => {
             <div className='grid gap-2 mt-10'>
               <p className='text-3xl font-bold text-center'>{question}</p>
               <p className='text-center border-[1px] border-neutral-focus rounded-xl px-3 py-2 font-bold h-11 '>{input}</p>
-              <div className='h-52 flex items-center justify-center border-[1px] rounded-xl border-neutral-focus'>
+              <div className='h-64 flex items-center justify-center border-[1px] rounded-xl border-neutral-focus'>
                 {!isGameOver?(<Keyboard updateInput={updateInput}/>):(<div className='flex gap-5'>
                   <button className='border-[1px] px-3 py-2 font-bold text-primary rounded-md border-neutral-focus shadow-2xl' onClick={()=>{overGame(false);updateTime(timeStored);writeInput('');}}>PlayAgain</button>
                 </div>)}

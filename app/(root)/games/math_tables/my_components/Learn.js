@@ -76,8 +76,9 @@ const Learn = (props) => {
   return (
     <>
       {myScreen==='learn'?(
-        <section className='w-full grid justify-center items-center'>
+        <section className='w-full grid justify-center items-center min-h-screen'>
           <div className='p-5 grid gap-5'>
+            <h1 className='text-3xl font-bold text-primary'>Learn</h1>
             <div className='grid gap-2'>
               <label htmlFor="">Number</label>
               <input type="text" value={tableNum} onChange={(e)=>{setTableNum(e.target.value)}} inputMode='numeric' className='bg-transparent px-3 py-2 border-[1px] rounded-md font-bold focus:outline-none' />
@@ -97,7 +98,8 @@ const Learn = (props) => {
       {myScreen==='learn-start'?(
          <section className='w-full h-[100vh] grid items-center justify-center'>
            <div className='w-[80vw] sm:w-[50vw] p-2'>
-             <div className='flex gap-2 items-center bg-primary rounded-md p-4'> 
+            <h1 className='text-3xl font-bold'>Learn</h1>
+             <div className='flex gap-2 items-center bg-primary rounded-md p-4 mt-12'> 
                <div className='w-full'><div className='w-full h-5 bg-neutral-focus rounded-md' id='my-time-graph'></div></div>
                <span>{time}</span>
              </div>
